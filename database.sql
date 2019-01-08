@@ -35,3 +35,19 @@ VALUES ('Cody', 'lakeville', 0, 0, 25);
 --How do you delete users that reside in miami OR phoenix and have completed 
 --fewer than 5 transactions.
 DELETE FROM accounts WHERE (city = 'miami' OR city = 'phoenix') AND transactions_completed < 5;
+
+
+--Stretch goals
+
+--Anthony moved to Santa Fe.
+UPDATE accounts SET city = 'santa fe' WHERE username = 'anthony';
+
+--Grace closed her account.
+DELETE FROM accounts WHERE user_id = 9;
+
+--Travis made a withdrawl of $20,000. What's their new balance? NOTE: Research RETURNING
+UPDATE accounts SET account_balance = (account_balance - 20000) WHERE username = 'travis'
+ RETURNING username, account_balance;
+
+--The Bank needs to track last names.
+ALTER TABLE accounts ADD COLUMN last_name varchar(24);
